@@ -159,6 +159,9 @@ class FakeForm{
                 }
                
 
+                if(email.includes('ñ')){
+                    email = email.replace('ñ', 'n')
+                }
                 input.value = email + `@${domain}.com`
 
             }
