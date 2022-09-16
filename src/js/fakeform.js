@@ -180,16 +180,51 @@ class FakeForm{
 
             if(typeData == 'date'){
 
-                let year = Math.floor(Math.random() * (2023 - 1850  + 1) + 1850);
-                var month = Math.floor(Math.random() * (12 - 1  + 1) + 1);
-                var day = Math.floor(Math.random() * (31 - 1  + 1) + 1);
+                if(input.hasAttribute('data-fake-between')){
+                    
+                    let between = input.getAttribute('data-fake-between')
+                    let minDate = between.split('-')[0]
+                    let maxDate = between.split('-')[1].trim()
 
-                month = (month <  10) ? "0" + month : month;
-                day = (day < 10) ? "0" + day: day;
+                    
+                    let minYear = parseInt(minDate.split('/')[0])
+                    let minMonth = parseInt(minDate.split('/')[1])
+                    let minDay = parseInt(minDate.split('/')[2])
 
-                let date = `${year}-${month}-${day}`
+                    let maxYear = parseInt(maxDate.split('/')[0])
+                    let maxMonth = parseInt(maxDate.split('/')[1])
+                    let maxDay = parseInt(maxDate.split('/')[2])
 
-                input.value = date
+
+                    var year = Math.floor(Math.random() * (maxYear - minYear  + 1) + minYear);
+                    var month = Math.floor(Math.random() * (maxMonth - minMonth  + 1) + minMonth);
+                    var day = Math.floor(Math.random() * (maxDay - minDay  + 1) + minDay);
+
+                    month = (month <  10) ? "0" + month : month;
+                    day = (day < 10) ? "0" + day: day;
+    
+                    let date = `${year}-${month}-${day}`
+    
+                    input.value = date
+                
+                }
+                else{
+
+                    var year = Math.floor(Math.random() * (2023 - 1850  + 1) + 1850);
+                    var month = Math.floor(Math.random() * (12 - 1  + 1) + 1);
+                    var day = Math.floor(Math.random() * (31 - 1  + 1) + 1);
+
+                    month = (month <  10) ? "0" + month : month;
+                    day = (day < 10) ? "0" + day: day;
+    
+                    let date = `${year}-${month}-${day}`
+    
+                    input.value = date
+
+                }
+               
+
+               
 
             }
 
