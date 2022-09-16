@@ -17,6 +17,7 @@ class FakeForm{
             'random',
             'integer',
             'decimal',
+            'text'
         ]
 
         this.firstNames = ['Diego', 'Miguel', 'Juan']
@@ -222,10 +223,22 @@ class FakeForm{
                     input.value = date
 
                 }
-               
 
-               
+            }
 
+            if(typeData == 'text'){
+
+                let text = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas delectus aspernatur, tenetur nam eaque perferendis nesciunt alias, minus iusto neque inventore odit, quisquam iure sint facere architecto illum vitae reprehenderit?'
+       
+                if(input.hasAttribute('data-fake-length')){
+
+                    input.value =  text.substr(0, input.getAttribute('data-fake-length'))
+
+                }
+                else{
+                    input.value =  text
+
+                }
             }
 
         }
