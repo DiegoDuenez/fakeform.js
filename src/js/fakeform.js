@@ -17,7 +17,7 @@ class FakeForm{
             'random',
             'integer',
             'decimal',
-            'text'
+            'lorem'
         ]
 
         this.firstNames = ['Diego', 'Miguel', 'Juan', 'Gabriel', 'Andrea', 'Melisa', 'Luis']
@@ -235,7 +235,7 @@ class FakeForm{
 
             }
 
-            if(typeData == 'text'){
+            if(typeData == 'lorem'){
 
                 let text = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas delectus aspernatur, tenetur nam eaque perferendis nesciunt alias, minus iusto neque inventore odit, quisquam iure sint facere architecto illum vitae reprehenderit?'
        
@@ -253,14 +253,55 @@ class FakeForm{
         }
         else if(typeData == null){
 
-            let chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-            let random = '';
+            if(input.type == 'text' || input.type == 'password'){
 
-            for(var x = 0; x <= 5; x++){
-                random += chars[Math.floor(Math.random() * chars.length)];
+                let chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+                let random = '';
+    
+                for(var x = 0; x <= 5; x++){
+                    random += chars[Math.floor(Math.random() * chars.length)];
+                }
+    
+                input.value = random
+
             }
+            else if(input.type == 'number'){
 
-            input.value = random
+                input.value = Math.floor(Math.random() * (9999 - 0  + 1) + 0);
+
+            }
+            else if(input.type == 'email'){
+
+                let chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+                let random = '';
+                let randomEmail = '';
+    
+                for(var x = 0; x <= 5; x++){
+                    random += chars[Math.floor(Math.random() * chars.length)];
+                }
+    
+                for(var x = 0; x <= 5; x++){
+                    randomEmail += chars[Math.floor(Math.random() * chars.length)];
+                }
+
+                input.value = random + '@' + randomEmail + '.com'
+
+            }
+            else if(input.type == 'date'){
+
+                var year = Math.floor(Math.random() * (2023 - 1850  + 1) + 1850);
+                var month = Math.floor(Math.random() * (12 - 1  + 1) + 1);
+                var day = Math.floor(Math.random() * (31 - 1  + 1) + 1);
+
+                month = (month <  10) ? "0" + month : month;
+                day = (day < 10) ? "0" + day: day;
+
+                let date = `${year}-${month}-${day}`
+
+                input.value = date
+
+            }
+            
         }
         else{
             console.log(`Data type ${typeData} not exists`)
