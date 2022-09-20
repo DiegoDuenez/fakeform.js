@@ -20,8 +20,8 @@ class FakeForm{
             'text'
         ]
 
-        this.firstNames = ['Diego', 'Miguel', 'Juan']
-        this.lastNames = ['Dueñez', 'Perez', 'Gomez']
+        this.firstNames = ['Diego', 'Miguel', 'Juan', 'Gabriel', 'Andrea', 'Melisa', 'Luis']
+        this.lastNames = ['Dueñez', 'Perez', 'Gomez', 'García', 'Basurto', 'Reyes']
 
         if(this.data.hasOwnProperty('options')){
             
