@@ -33,23 +33,29 @@ class FakeForm{
 
                     this.button = document.querySelector(this.data.options.button)
 
+                        this.button.addEventListener('click', (e) => {
 
-                    this.button.addEventListener('click', (e) => {
-                        this.getInputs()
-                    });
+                            e.preventDefault()
+
+                            if(this.button.type == 'submit' || this.button.type == 'reset'){
+                                console.log(`The button can't be of type ${this.button.type}`)
+                            }
+                            else{
+                                this.getInputsDataFake()
+                            }
+
+                        });
                     
                 }
 
             }
-
-            
 
         }
 
     }
 
 
-    getInputs(){
+    getInputsDataFake(){
 
         
         this.inputs = this.form.getElementsByTagName("input");
@@ -244,6 +250,17 @@ class FakeForm{
                 }
             }
 
+        }
+        else if(typeData == null){
+
+            let chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+            let random = '';
+
+            for(var x = 0; x <= 5; x++){
+                random += chars[Math.floor(Math.random() * chars.length)];
+            }
+
+            input.value = random
         }
         else{
             console.log(`Data type ${typeData} not exists`)
