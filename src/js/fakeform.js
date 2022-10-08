@@ -38,7 +38,7 @@ class FakeForm{
                             e.preventDefault()
 
                             if(this.button.type == 'submit' || this.button.type == 'reset'){
-                                console.log(`The button can't be of type ${this.button.type}`)
+                                console.warn(`The button can't be of type ${this.button.type}`)
                             }
                             else{
                                 this.getInputsDataFake()
@@ -145,7 +145,7 @@ class FakeForm{
             
         }
         else{
-            console.log(`Data type ${typeData} not exists`)
+            console.warn(`Data type ${typeData} not exists`)
         }
 
     }
